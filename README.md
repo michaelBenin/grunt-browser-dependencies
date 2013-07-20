@@ -44,7 +44,7 @@ grunt.initConfig({
                           "labjs-2.0.3.js": "https://raw.github.com/getify/LABjs/master/LAB.min.js"
                       },
                       {
-                          "labjs-debug-2.0.3": "https://raw.github.com/getify/LABjs/master/LAB-debug.min.js"
+                          "labjs-debug-2.0.3.js": "https://raw.github.com/getify/LABjs/master/LAB-debug.min.js"
                       }
                   ]
               },
