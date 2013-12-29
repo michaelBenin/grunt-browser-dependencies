@@ -1,7 +1,7 @@
 {
     "name": "grunt-browser-dependencies",
     "description": "Downloads javascript files from the web",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "homepage": "https://github.com/michaelbenin/grunt-browser-dependencies",
     "author": "Michael Benin",
     "repository": {
@@ -41,7 +41,9 @@
         "dependencies",
         "browser",
         "script",
-        "loader"
+        "loader",
+        "bower",
+        "browserify"
     ],
     "readmeFilename": "README.md",
     "gitHead": "84e98af38954498ba41e10d7790787bbea71d726",

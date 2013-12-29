@@ -143,6 +143,61 @@ grunt.initConfig({
 
 });
 
+
+
 grunt.registerTask('default', ['browserDependencies']);
+
+// or in your package.json (browserify-shim config optional):
+
+"browserDependencies": {
+        "options": {},
+        "main":{
+            "dir": "client_modules",
+            "files":[
+                {
+                    "jquery-2.0.3.js": "http://code.jquery.com/jquery-2.0.3.js",
+                    "require_by": "jquery",
+                    "exports": "$",
+                    "depends": {}
+                },
+                {
+                    "enquire-2.0.0.js": "https://raw.github.com/WickyNilliams/enquire.js/v2.0.0/dist/enquire.js",
+                    "require_by": "enquire",
+                    "depends": {},
+                    "exports":"enquire"
+                }
+            ]
+        }
+
+// Then in your gruntfile using grunt-browserify:
+
+browserify: {
+      build: {
+        src: ['client/js/init.js'],
+        dest: 'built/static/js/<%= pkg.name %>.js',
+        options: {
+          transform: [
+            'hbsfy',
+            'requireify',
+            'promethify'
+          ],
+          shim: (function(){
+              var shim = {};
+              var dir = grunt.file.readJSON('package.json').browserDependencies.main.dir;
+              grunt.file.readJSON('package.json').browserDependencies.main.files
+              .forEach(function(conf){
+                var currentShim = shim[conf['require_by']] = {};
+                currentShim.path = dir + '/' + Object.keys(conf)[0];
+                currentShim.exports = conf.exports;
+                if(conf.depends){
+                    currentShim.depends = conf.depends;
+                }
+              });
+              return shim;
+          }())
+        }
+      },
+
+// Allows one central config for all external client side js that needs to be built.
 
 ```

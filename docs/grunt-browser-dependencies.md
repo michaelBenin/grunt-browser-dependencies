@@ -1,7 +1,7 @@
 ## Example config
 
 ```javascript
-
+// Note other configuration options can go in the files object, make sure that the first propery key value is the name and url.
 grunt.initConfig({
 
   "browserDependencies": {

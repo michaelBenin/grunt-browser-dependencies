@@ -1,1 +1,1 @@
-Download js files from the web
+Download js files from the web, contain browserify shim config.
