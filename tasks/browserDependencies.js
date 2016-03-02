@@ -31,7 +31,7 @@ module.exports = function (grunt) {
             };
 
             if (!grunt.file.exists(file_path)){
-                http.get({url: url}, file_path, function (error, result) {
+                http.get({url: url, timeout: 30000}, file_path, function (error, result) {
                     if (error) {
                         grunt.log.write(error);
                         done(false);
